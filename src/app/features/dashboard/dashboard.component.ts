@@ -59,27 +59,37 @@ import {
             }
           } @else {
             <div class="kpi-card" id="kpi-users">
-              <div class="kpi-icon">👥</div>
+              <div class="kpi-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+              </div>
               <div class="kpi-value">{{ overview()?.activeUsers | number }}</div>
               <div class="kpi-label">Active Users</div>
             </div>
             <div class="kpi-card" id="kpi-sessions">
-              <div class="kpi-icon">📡</div>
+              <div class="kpi-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"></path><path d="M12 12v9"></path><path d="m8 17 4 4 4-4"></path></svg>
+              </div>
               <div class="kpi-value">{{ overview()?.sessions | number }}</div>
               <div class="kpi-label">Sessions</div>
             </div>
             <div class="kpi-card" id="kpi-pageviews">
-              <div class="kpi-icon">📄</div>
+              <div class="kpi-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+              </div>
               <div class="kpi-value">{{ overview()?.pageViews | number }}</div>
               <div class="kpi-label">Page Views</div>
             </div>
             <div class="kpi-card" id="kpi-bounce">
-              <div class="kpi-icon">↩️</div>
+              <div class="kpi-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 17 4 12 9 7"></polyline><path d="M20 18v-2a4 4 0 0 0-4-4H4"></path></svg>
+              </div>
               <div class="kpi-value">{{ overview()?.bounceRate }}%</div>
               <div class="kpi-label">Bounce Rate</div>
             </div>
             <div class="kpi-card" id="kpi-duration">
-              <div class="kpi-icon">⏱️</div>
+              <div class="kpi-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              </div>
               <div class="kpi-value">{{ formatDuration(overview()?.avgSessionDuration) }}</div>
               <div class="kpi-label">Avg. Session</div>
             </div>
@@ -156,7 +166,7 @@ import {
               <div class="device-list">
                 @for (d of devices(); track d.device) {
                   <div class="device-row">
-                    <div class="device-icon">{{ deviceIcon(d.device) }}</div>
+                    <div class="device-icon" [innerHTML]="deviceIcon(d.device)"></div>
                     <div class="device-info">
                       <div class="device-name">{{ d.device | titlecase }}</div>
                       <div class="device-bar-wrap">
@@ -717,9 +727,10 @@ export class DashboardComponent implements OnInit {
   }
 
   deviceIcon(device: string): string {
-    const map: Record<string, string> = {
-      mobile: '📱', desktop: '🖥️', tablet: '📟',
-    };
-    return map[device?.toLowerCase()] || '💻';
+    const d = device?.toLowerCase();
+    if (d === 'mobile') return '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>';
+    if (d === 'desktop') return '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>';
+    if (d === 'tablet') return '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>';
+    return '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>';
   }
 }
