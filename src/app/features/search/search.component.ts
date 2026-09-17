@@ -591,13 +591,77 @@ export class SearchComponent implements OnInit, OnDestroy {
   ];
 
   filteredProducts = computed(() => {
-    const query = this.currentQuery().toLowerCase().trim();
+    const rawQuery = this.currentQuery().trim();
+    const query = rawQuery.toLowerCase();
     const category = this.activeCategory();
-    return this.allProducts.filter(p => {
-      const matchesQuery = !query || p.name.toLowerCase().includes(query) || p.description.toLowerCase().includes(query) || p.category.toLowerCase().includes(query) || p.badge.toLowerCase().includes(query);
-      const matchesCategory = category === 'All' || p.category === category;
-      return matchesQuery && matchesCategory;
+    
+    let results = this.allProducts;
+    
+    // Category filter
+    if (category !== 'All') {
+      results = results.filter(p => p.category === category);
+    }
+
+    if (!query) return results;
+
+    const queryTerms = query.split(/\s+/).filter(t => t.length > 0);
+
+    const scored = results.map(p => {
+      let score = 0;
+      const name = p.name.toLowerCase();
+      const desc = p.description.toLowerCase();
+      const cat = p.category.toLowerCase();
+      const badge = p.badge.toLowerCase();
+
+      // 1. Exact sequence matches
+      if (name === query) score += 100;
+      else if (name.startsWith(query)) score += 50;
+      else if (name.includes(query)) score += 30;
+
+      if (desc.includes(query)) score += 15;
+      
+      if (cat === query || badge === query) score += 20;
+      else if (cat.includes(query) || badge.includes(query)) score += 10;
+
+      // 2. Individual term matching
+      let allTermsMatched = true;
+      for (const term of queryTerms) {
+        let termMatched = false;
+        
+        if (name.includes(term)) {
+          score += 5;
+          termMatched = true;
+          // Bonus if the term matches at a word boundary
+          if (name.startsWith(term) || name.includes(` ${term}`) || name.includes(`-${term}`)) {
+            score += 5;
+          }
+        } else if (desc.includes(term)) {
+          score += 2;
+          termMatched = true;
+        } else if (cat.includes(term) || badge.includes(term)) {
+          score += 2;
+          termMatched = true;
+        }
+
+        if (!termMatched) {
+          allTermsMatched = false;
+        }
+      }
+
+      const hasExactSequence = name.includes(query) || desc.includes(query) || cat.includes(query) || badge.includes(query);
+      
+      // Strict filtering: require either an exact substring match anywhere, OR all individual words to be found
+      if (!hasExactSequence && !allTermsMatched) {
+        score = 0;
+      }
+
+      return { product: p, score };
     });
+
+    return scored
+      .filter(s => s.score > 0)
+      .sort((a, b) => b.score - a.score)
+      .map(s => s.product);
   });
 
   getCategoryIcon(category: string): string {
@@ -615,7 +679,7 @@ export class SearchComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.searchControl.valueChanges.pipe(
-      debounceTime(300),
+      debounceTime(200),
       distinctUntilChanged(),
       takeUntil(this.destroy$)
     ).subscribe(query => {
@@ -632,17 +696,17 @@ export class SearchComponent implements OnInit, OnDestroy {
     this.isLoading.set(true);
     this.currentQuery.set(query.trim());
 
-    // Simulate async search
+    // Simulate async search with a shorter delay for snappiness
     setTimeout(() => {
       this.isLoading.set(false);
       if (query.trim()) {
         this.analytics.track('search', {
-          query: query.trim(),
+          search_term: query.trim(),
           resultCount: this.filteredProducts().length,
           category: this.activeCategory(),
         });
       }
-    }, 600);
+    }, 250);
   }
 
   setCategory(cat: string): void {

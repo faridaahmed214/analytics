@@ -810,7 +810,7 @@ export class FormComponent {
         this.contactForm.reset();
       }, 1800);
     } else {
-      this.analytics.track("form_submit", { status: "Failed", errors: this.getFormErrors() });
+      this.analytics.track("form_submit", { status: "Failed", errors: this.getFormErrors().join(', ') });
       this.showToast("error", "Please fix the errors", "Some required fields are missing or invalid. Please review and try again.");
     }
   }

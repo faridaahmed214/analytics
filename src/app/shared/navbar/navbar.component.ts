@@ -1,6 +1,7 @@
 import { Component, HostListener, signal } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { AnalyticsService } from '../../core/services/analytics.service';
 
 @Component({
   selector: 'app-navbar',
@@ -55,7 +56,7 @@ import { CommonModule } from '@angular/common';
         </div>
 
         <!-- CTA -->
-        <a routerLink="/form" class="navbar-cta" aria-label="Get started">
+        <a routerLink="/form" class="navbar-cta" aria-label="Get started" (click)="onCtaClick()">
           Get Started
         </a>
 
@@ -77,7 +78,7 @@ import { CommonModule } from '@angular/common';
         <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="mobile-link" (click)="closeMenu()" role="menuitem">Home</a>
         <a routerLink="/search" routerLinkActive="active" class="mobile-link" (click)="closeMenu()" role="menuitem">Search</a>
         <a routerLink="/form" routerLinkActive="active" class="mobile-link" (click)="closeMenu()" role="menuitem">Contact</a>
-        <a routerLink="/form" class="mobile-cta" (click)="closeMenu()" role="menuitem">Get Started</a>
+        <a routerLink="/form" class="mobile-cta" (click)="onMobileCtaClick()" role="menuitem">Get Started</a>
       </div>
     </nav>
   `,
@@ -311,6 +312,8 @@ export class NavbarComponent {
   isScrolled = signal(false);
   menuOpen = signal(false);
 
+  constructor(private analytics: AnalyticsService) {}
+
   @HostListener('window:scroll')
   onScroll(): void {
     this.isScrolled.set(window.scrollY > 20);
@@ -322,6 +325,23 @@ export class NavbarComponent {
 
   closeMenu(): void {
     this.menuOpen.set(false);
+  }
+
+  onCtaClick(): void {
+    this.analytics.track('cta_click', {
+      page: 'navbar',
+      element: 'desktop_cta',
+      label: 'Get Started',
+    });
+  }
+
+  onMobileCtaClick(): void {
+    this.closeMenu();
+    this.analytics.track('cta_click', {
+      page: 'navbar',
+      element: 'mobile_cta',
+      label: 'Get Started',
+    });
   }
 }
 
