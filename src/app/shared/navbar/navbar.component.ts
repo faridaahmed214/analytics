@@ -15,7 +15,7 @@ import { CommonModule } from '@angular/common';
     >
       <div class="navbar-inner">
         <!-- Logo -->
-        <a routerLink="/" class="navbar-logo" aria-label="Geidea Home">
+        <a routerLink="/" class="navbar-logo" aria-label="Home">
           <div class="logo-icon">
             <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
               <rect width="28" height="28" rx="8" fill="#C9A96E"/>
@@ -23,7 +23,6 @@ import { CommonModule } from '@angular/common';
               <circle cx="14" cy="19" r="2.5" fill="#1C1917"/>
             </svg>
           </div>
-          <span class="logo-text">Geidea</span>
         </a>
 
         <!-- Desktop Links -->

@@ -125,7 +125,7 @@ interface ToastState {
                     type="text"
                     class="field-input"
                     formControlName="fullName"
-                    placeholder="Mohammed Al-Rashid"
+                    placeholder="Farida Ahmed"
                     autocomplete="name"
                     [attr.aria-invalid]="isInvalid('fullName')"
                     aria-describedby="fullName-error"

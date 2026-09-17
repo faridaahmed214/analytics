@@ -81,19 +81,24 @@ import { AnalyticsService } from '../../core/services/analytics.service';
           <div class="card-mockup">
             <div class="card-face">
               <div class="card-chip"></div>
-              <div class="card-number">â€¢â€¢â€¢â€¢ â€¢â€¢â€¢â€¢ â€¢â€¢â€¢â€¢ 4291</div>
+              <div class="card-number">•••• •••• •••• 4291</div>
               <div class="card-bottom">
                 <div>
                   <div class="card-label">Card Holder</div>
-                  <div class="card-value">Mohammed Al-Rashid</div>
+                  <div class="card-value">Farida Ahmed</div>
                 </div>
                 <div>
                   <div class="card-label">Expires</div>
                   <div class="card-value">09/28</div>
                 </div>
                 <div class="card-logo">
-                  <div class="card-logo-inner">G</div>
-                </div>
+ <div class="logo-icon">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+              <rect width="28" height="28" rx="8" fill="#C9A96E"/>
+              <path d="M7 14C7 10.134 10.134 7 14 7C17.866 7 21 10.134 21 14H17.5C17.5 12.067 15.933 10.5 14 10.5C12.067 10.5 10.5 12.067 10.5 14H7Z" fill="#1C1917"/>
+              <circle cx="14" cy="19" r="2.5" fill="#1C1917"/>
+            </svg>
+          </div>                </div>
               </div>
             </div>
           </div>
@@ -129,41 +134,8 @@ import { AnalyticsService } from '../../core/services/analytics.service';
         </div>
       </section>
 
-      <!-- Features Section -->
-      <section class="features-section" aria-labelledby="features-heading">
-        <div class="features-inner">
-          <div class="section-badge">
-            <span class="section-tag">Why Choose Us</span>
-          </div>
-          <h2 id="features-heading" class="section-title">Built for Modern Commerce</h2>
-          <p class="section-desc">Everything you need to accept payments, manage your business, and grow revenue.</p>
 
-          <div class="features-grid">
-            @for (feature of features; track feature.id) {
-              <div class="feature-card" [attr.id]="'feature-' + feature.id">
-                <div class="feature-icon-wrap">
-                  <span class="feature-icon" [innerHTML]="feature.icon"></span>
-                </div>
-                <h3 class="feature-title">{{ feature.title }}</h3>
-                <p class="feature-desc">{{ feature.description }}</p>
-              </div>
-            }
-          </div>
-        </div>
-      </section>
 
-      <!-- Stats Section -->
-      <section class="stats-section" aria-labelledby="stats-heading">
-        <div class="stats-inner">
-          <h2 id="stats-heading" class="sr-only">Key Statistics</h2>
-          @for (stat of stats; track stat.label) {
-            <div class="stat-block">
-              <div class="stat-num">{{ stat.value }}</div>
-              <div class="stat-lbl">{{ stat.label }}</div>
-            </div>
-          }
-        </div>
-      </section>
 
       <!-- CTA Section -->
       <section class="cta-section" aria-labelledby="cta-section-heading">
@@ -793,7 +765,7 @@ export class HomeComponent implements OnInit {
     { value: '47+', label: 'Countries Supported' },
   ];
 
-  constructor(private analytics: AnalyticsService) {}
+  constructor(private analytics: AnalyticsService) { }
 
   ngOnInit(): void {
     // Trigger entrance animations after a tick
