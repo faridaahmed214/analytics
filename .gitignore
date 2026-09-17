@@ -6,6 +6,12 @@
 /out-tsc
 /bazel-out
 
+# Secrets — NEVER commit these
+*.json.key
+geidea-analytics-*.json
+service-account*.json
+
+
 # Node
 /node_modules
 npm-debug.log

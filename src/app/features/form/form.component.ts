@@ -67,7 +67,7 @@ interface ToastState {
                 </div>
                 <div>
                   <div class="contact-label">Email</div>
-                  <div class="contact-value">hello@geidea.net</div>
+                  <div class="contact-value">hello@example.com</div>
                 </div>
               </div>
               <div class="contact-item" role="listitem">
@@ -93,7 +93,7 @@ interface ToastState {
               </div>
               <div class="social-text">
                 <div class="social-strong">50,000+ businesses</div>
-                <div class="social-muted">already trust Geidea</div>
+                <div class="social-muted">already trust us</div>
               </div>
             </div>
           </div>

@@ -151,7 +151,7 @@ interface Product {
               </div>
             } @else {
               <div class="empty-state" role="status" aria-live="polite">
-                <div class="empty-icon" aria-hidden="true">ðŸ”</div>
+                <div class="empty-icon" aria-hidden="true">🔍</div>
                 <h2 class="empty-title">No products found</h2>
                 <p class="empty-desc">Try a different search term or browse all categories.</p>
                 <button id="clear-search-button" class="btn-accent" (click)="clearSearch()">Clear Search</button>
@@ -568,26 +568,26 @@ export class SearchComponent implements OnInit, OnDestroy {
   categories = ['All', 'Payments', 'Commerce', 'Analytics', 'Security', 'APIs'];
 
   allProducts: Product[] = [
-    { id: 1, name: 'Payment Gateway', category: 'Payments', price: 49, currency: 'SAR', description: 'Full-stack payment processing with support for 150+ payment methods and instant settlements.', badge: 'Most Popular', emoji: 'ðŸ’³' },
-    { id: 2, name: 'POS Terminal Pro', category: 'Payments', price: 129, currency: 'SAR', description: 'Smart point-of-sale terminal with built-in receipt printer, NFC, and cloud sync.', badge: 'Hardware', emoji: 'ðŸ–¥ï¸' },
-    { id: 3, name: 'E-Commerce Suite', category: 'Commerce', price: 89, currency: 'SAR', description: 'Complete online store engine with cart, checkout, and Geidea payments pre-integrated.', badge: 'Bundle', emoji: 'ðŸ›’' },
-    { id: 4, name: 'Insights Dashboard', category: 'Analytics', price: 39, currency: 'SAR', description: 'Real-time transaction analytics, cohort analysis, and revenue forecasting powered by AI.', badge: 'AI-Powered', emoji: 'ðŸ“Š' },
-    { id: 5, name: 'Fraud Shield', category: 'Security', price: 59, currency: 'SAR', description: 'ML-based fraud detection with 99.97% accuracy and real-time transaction blocking.', badge: 'Security', emoji: 'ðŸ›¡ï¸' },
-    { id: 6, name: 'Pay Links', category: 'Payments', price: 0, currency: 'SAR', description: 'Generate shareable payment links in seconds â€” no website required. Perfect for SMBs.', badge: 'Free', emoji: 'ðŸ”—' },
-    { id: 7, name: 'Subscription Engine', category: 'Commerce', price: 69, currency: 'SAR', description: 'Automated recurring billing with smart dunning, trial management, and upgrade flows.', badge: 'New', emoji: 'ðŸ”„' },
-    { id: 8, name: 'Checkout API', category: 'APIs', price: 29, currency: 'SAR', description: 'Embeddable, customizable checkout UI â€” prebuilt components for every framework.', badge: 'Developer', emoji: 'âš™ï¸' },
-    { id: 9, name: 'Multi-Currency Wallet', category: 'Payments', price: 79, currency: 'SAR', description: 'Hold, convert, and send funds in 40+ currencies with real-time exchange rates.', badge: 'Global', emoji: 'ðŸŒ' },
-    { id: 10, name: 'Risk Intelligence', category: 'Security', price: 99, currency: 'SAR', description: 'Comprehensive risk scoring API for onboarding, transactions, and account takeover detection.', badge: 'Enterprise', emoji: 'ðŸ”' },
-    { id: 11, name: 'QR Pay', category: 'Payments', price: 19, currency: 'SAR', description: 'Dynamic and static QR code payments. Works with all major wallet apps in MENA.', badge: 'MENA', emoji: 'ðŸ“±' },
-    { id: 12, name: 'Webhook Studio', category: 'APIs', price: 15, currency: 'SAR', description: 'Reliable event delivery, retry logic, log explorer, and payload transformation tools.', badge: 'Developer', emoji: 'ðŸ””' },
-    { id: 13, name: 'Loyalty Platform', category: 'Commerce', price: 59, currency: 'SAR', description: 'Points, cashback, tier programs, and branded rewards â€” fully white-labeled.', badge: 'Retention', emoji: 'â­' },
-    { id: 14, name: 'Compliance Suite', category: 'Security', price: 119, currency: 'SAR', description: 'KYC/AML automation, SAMA reporting tools, and audit trails for regulated industries.', badge: 'Regulated', emoji: 'âš–ï¸' },
-    { id: 15, name: 'Revenue Analytics API', category: 'APIs', price: 49, currency: 'SAR', description: 'Query raw transaction data, build custom reports, and power your BI tools via REST.', badge: 'Data', emoji: 'ðŸ“ˆ' },
-    { id: 16, name: 'Smart Invoicing', category: 'Commerce', price: 35, currency: 'SAR', description: 'Professional invoice generation with payment tracking, reminders, and AR automation.', badge: 'Automation', emoji: 'ðŸ§¾' },
-    { id: 17, name: 'Terminal Cloud', category: 'Payments', price: 45, currency: 'SAR', description: 'Manage your entire POS fleet remotely â€” software updates, config, and diagnostics.', badge: 'Fleet', emoji: 'â˜ï¸' },
-    { id: 18, name: 'Mobile SDK', category: 'APIs', price: 0, currency: 'SAR', description: 'Native iOS and Android SDKs for in-app payments, biometric auth, and wallet integration.', badge: 'Free', emoji: 'ðŸ“²' },
-    { id: 19, name: 'Business Intelligence', category: 'Analytics', price: 149, currency: 'SAR', description: 'Executive dashboards, benchmarking against industry peers, and predictive revenue models.', badge: 'Premium', emoji: 'ðŸ†' },
-    { id: 20, name: 'Open Banking Hub', category: 'APIs', price: 89, currency: 'SAR', description: 'Connect to 200+ banks via open banking APIs for account aggregation and payment initiation.', badge: 'Banking', emoji: 'ðŸ¦' },
+    { id: 1, name: 'Payment Gateway', category: 'Payments', price: 49, currency: 'SAR', description: 'Full-stack payment processing with support for 150+ payment methods and instant settlements.', badge: 'Most Popular', emoji: '💳' },
+    { id: 2, name: 'POS Terminal Pro', category: 'Payments', price: 129, currency: 'SAR', description: 'Smart point-of-sale terminal with built-in receipt printer, NFC, and cloud sync.', badge: 'Hardware', emoji: '🖥️' },
+    { id: 3, name: 'E-Commerce Suite', category: 'Commerce', price: 89, currency: 'SAR', description: 'Complete online store engine with cart, checkout, and our payments pre-integrated.', badge: 'Bundle', emoji: '🛒' },
+    { id: 4, name: 'Insights Dashboard', category: 'Analytics', price: 39, currency: 'SAR', description: 'Real-time transaction analytics, cohort analysis, and revenue forecasting powered by AI.', badge: 'AI-Powered', emoji: '📊' },
+    { id: 5, name: 'Fraud Shield', category: 'Security', price: 59, currency: 'SAR', description: 'ML-based fraud detection with 99.97% accuracy and real-time transaction blocking.', badge: 'Security', emoji: '🛡️' },
+    { id: 6, name: 'Pay Links', category: 'Payments', price: 0, currency: 'SAR', description: 'Generate shareable payment links in seconds — no website required. Perfect for SMBs.', badge: 'Free', emoji: '🔗' },
+    { id: 7, name: 'Subscription Engine', category: 'Commerce', price: 69, currency: 'SAR', description: 'Automated recurring billing with smart dunning, trial management, and upgrade flows.', badge: 'New', emoji: '🔄' },
+    { id: 8, name: 'Checkout API', category: 'APIs', price: 29, currency: 'SAR', description: 'Embeddable, customizable checkout UI — prebuilt components for every framework.', badge: 'Developer', emoji: '⚙️' },
+    { id: 9, name: 'Multi-Currency Wallet', category: 'Payments', price: 79, currency: 'SAR', description: 'Hold, convert, and send funds in 40+ currencies with real-time exchange rates.', badge: 'Global', emoji: '🌎' },
+    { id: 10, name: 'Risk Intelligence', category: 'Security', price: 99, currency: 'SAR', description: 'Comprehensive risk scoring API for onboarding, transactions, and account takeover detection.', badge: 'Enterprise', emoji: '🔎' },
+    { id: 11, name: 'QR Pay', category: 'Payments', price: 19, currency: 'SAR', description: 'Dynamic and static QR code payments. Works with all major wallet apps in MENA.', badge: 'MENA', emoji: '📱' },
+    { id: 12, name: 'Webhook Studio', category: 'APIs', price: 15, currency: 'SAR', description: 'Reliable event delivery, retry logic, log explorer, and payload transformation tools.', badge: 'Developer', emoji: '🔔' },
+    { id: 13, name: 'Loyalty Platform', category: 'Commerce', price: 59, currency: 'SAR', description: 'Points, cashback, tier programs, and branded rewards — fully white-labeled.', badge: 'Retention', emoji: '⭐' },
+    { id: 14, name: 'Compliance Suite', category: 'Security', price: 119, currency: 'SAR', description: 'KYC/AML automation, SAMA reporting tools, and audit trails for regulated industries.', badge: 'Regulated', emoji: '⚖️' },
+    { id: 15, name: 'Revenue Analytics API', category: 'APIs', price: 49, currency: 'SAR', description: 'Query raw transaction data, build custom reports, and power your BI tools via REST.', badge: 'Data', emoji: '📈' },
+    { id: 16, name: 'Smart Invoicing', category: 'Commerce', price: 35, currency: 'SAR', description: 'Professional invoice generation with payment tracking, reminders, and AR automation.', badge: 'Automation', emoji: '🧾' },
+    { id: 17, name: 'Terminal Cloud', category: 'Payments', price: 45, currency: 'SAR', description: 'Manage your entire POS fleet remotely — software updates, config, and diagnostics.', badge: 'Fleet', emoji: '☁️' },
+    { id: 18, name: 'Mobile SDK', category: 'APIs', price: 0, currency: 'SAR', description: 'Native iOS and Android SDKs for in-app payments, biometric auth, and wallet integration.', badge: 'Free', emoji: '📲' },
+    { id: 19, name: 'Business Intelligence', category: 'Analytics', price: 149, currency: 'SAR', description: 'Executive dashboards, benchmarking against industry peers, and predictive revenue models.', badge: 'Premium', emoji: '🏆' },
+    { id: 20, name: 'Open Banking Hub', category: 'APIs', price: 89, currency: 'SAR', description: 'Connect to 200+ banks via open banking APIs for account aggregation and payment initiation.', badge: 'Banking', emoji: '🏦' },
   ];
 
   filteredProducts = computed(() => {

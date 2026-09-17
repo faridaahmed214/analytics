@@ -28,17 +28,16 @@ import { AnalyticsService } from '../../core/services/analytics.service';
             <span class="title-line">Worldwide</span>
           </h1>
 
-          <p class="hero-desc" [class.animate-in]="isVisible()">
-            Geidea delivers next-generation payment infrastructure for businesses
+          <p class="hero-desc">
+            We deliver next-generation payment infrastructure for businesses
             across the Middle East and Africa â€” fast, secure, and beautifully simple.
           </p>
 
           <div class="hero-actions" [class.animate-in]="isVisible()">
-            <button
-              id="hero-cta-button"
-              class="btn-primary"
-              (click)="onCtaClick()"
-              aria-label="Get started with Geidea"
+            <button 
+              class="btn-primary" 
+              (click)="trackCTA()"
+              aria-label="Get started"
             >
               <span>Get Started</span>
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
@@ -101,7 +100,7 @@ import { AnalyticsService } from '../../core/services/analytics.service';
 
           <!-- Floating Stats -->
           <div class="stat-chip stat-chip-1">
-            <div class="stat-icon">ðŸ“ˆ</div>
+            <div class="stat-icon">📈</div>
             <div>
               <div class="stat-value">+24.8%</div>
               <div class="stat-label">Revenue Growth</div>
@@ -115,7 +114,7 @@ import { AnalyticsService } from '../../core/services/analytics.service';
             </div>
           </div>
           <div class="stat-chip stat-chip-3">
-            <div class="stat-icon">ðŸŒ</div>
+            <div class="stat-icon">🌍</div>
             <div>
               <div class="stat-value">47+</div>
               <div class="stat-label">Countries</div>
@@ -127,11 +126,11 @@ import { AnalyticsService } from '../../core/services/analytics.service';
       <!-- Features Section -->
       <section class="features-section" aria-labelledby="features-heading">
         <div class="features-inner">
-          <div class="section-header">
-            <span class="section-tag">Why Geidea</span>
-            <h2 id="features-heading" class="section-title">Built for Modern Commerce</h2>
-            <p class="section-desc">Everything you need to accept payments, manage your business, and grow revenue.</p>
+          <div class="section-badge">
+            <span class="section-tag">Why Choose Us</span>
           </div>
+          <h2 id="features-heading" class="section-title">Built for Modern Commerce</h2>
+          <p class="section-desc">Everything you need to accept payments, manage your business, and grow revenue.</p>
 
           <div class="features-grid">
             @for (feature of features; track feature.id) {
@@ -164,7 +163,7 @@ import { AnalyticsService } from '../../core/services/analytics.service';
       <section class="cta-section" aria-labelledby="cta-section-heading">
         <div class="cta-inner">
           <h2 id="cta-section-heading" class="cta-title">Ready to transform your payment experience?</h2>
-          <p class="cta-sub">Join thousands of businesses processing billions in transactions with Geidea.</p>
+          <p class="cta-sub">Join thousands of businesses processing billions in transactions.</p>
           <div class="cta-actions">
             <button id="bottom-cta-button" class="btn-primary" (click)="onCtaClick()">
               <span>Start Free Trial</span>
@@ -773,12 +772,12 @@ export class HomeComponent implements OnInit {
   isVisible = signal(false);
 
   features = [
-    { id: 1, icon: 'âš¡', title: 'Instant Payments', description: 'Process transactions in under 300ms with our globally distributed payment network and intelligent routing engine.' },
-    { id: 2, icon: 'ðŸ”’', title: 'Bank-Grade Security', description: 'PCI DSS Level 1 compliant with end-to-end encryption, real-time fraud detection, and 3D Secure 2.0.' },
-    { id: 3, icon: 'ðŸ“Š', title: 'Smart Analytics', description: 'Real-time dashboards, conversion funnels, and AI-powered insights to help you make faster business decisions.' },
-    { id: 4, icon: 'ðŸŒ', title: 'Global Reach', description: 'Accept payments in 150+ currencies across 47 countries with seamless multi-currency settlement.' },
-    { id: 5, icon: 'ðŸ”—', title: 'Easy Integration', description: 'REST APIs, SDKs for every major platform, and no-code options. Go live in days, not months.' },
-    { id: 6, icon: 'ðŸ“±', title: 'Omnichannel', description: 'Online, in-store, mobile, and QR â€” unified payment acceptance across every touchpoint your customers use.' },
+    { id: 1, icon: '⚡', title: 'Instant Payments', description: 'Process transactions in under 300ms with our globally distributed payment network and intelligent routing engine.' },
+    { id: 2, icon: '🔒', title: 'Bank-Grade Security', description: 'PCI DSS Level 1 compliant with end-to-end encryption, real-time fraud detection, and 3D Secure 2.0.' },
+    { id: 3, icon: '📊', title: 'Smart Analytics', description: 'Real-time dashboards, conversion funnels, and AI-powered insights to help you make faster business decisions.' },
+    { id: 4, icon: '🌍', title: 'Global Reach', description: 'Accept payments in 150+ currencies across 47 countries with seamless multi-currency settlement.' },
+    { id: 5, icon: '🔗', title: 'Easy Integration', description: 'REST APIs, SDKs for every major platform, and no-code options. Go live in days, not months.' },
+    { id: 6, icon: '📱', title: 'Omnichannel', description: 'Online, in-store, mobile, and QR — unified payment acceptance across every touchpoint your customers use.' },
   ];
 
   stats = [
