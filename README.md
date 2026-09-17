@@ -1,59 +1,53 @@
-# 1stTask
+# Geidea App
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.1.8.
+This project is an Angular application with a Node.js Express backend proxy for Google Analytics data.
 
-## Development server
+## Getting Started
 
-To start a local development server, run:
+Follow these steps to run the application locally.
 
-```bash
-ng serve
-```
+### 1. Install Dependencies
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+First, ensure you have Node.js installed, then install the project dependencies:
 
 ```bash
-ng generate component component-name
+npm install
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+### 2. Start the Backend Server (Analytics Proxy)
+
+The application relies on a local Node.js Express server to fetch and proxy Google Analytics data. Open a terminal and run:
 
 ```bash
-ng generate --help
+node analytics-server.js
 ```
+The analytics server will start on `http://localhost:3000`.
 
-## Building
+*(Note: The server requires a valid `geidea-analytics-998b0b4f4c67.json` service account key file in the root directory to authenticate with Google Analytics).*
 
-To build the project run:
+### 3. Start the Angular Development Server
+
+Open a second terminal window/tab and start the Angular frontend application:
 
 ```bash
-ng build
+npm start
 ```
+*(This command runs `ng serve --proxy-config proxy.conf.json` behind the scenes, routing API calls to the backend).*
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Running unit tests
+## Project Structure
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+- `src/app/`: Contains the Angular frontend code (components, services, etc.)
+- `analytics-server.js`: The backend Node.js proxy server for Google Analytics Data API.
+- `proxy.conf.json`: Configuration to proxy frontend `/api` requests to the local Node.js server running on port 3000.
+
+## Building for Production
+
+To build the project for production, run:
 
 ```bash
-ng test
+npm run build
 ```
 
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+This will compile the Angular project and store the build artifacts in the `dist/` directory, optimized for performance and speed.
