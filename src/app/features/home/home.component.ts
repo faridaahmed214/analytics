@@ -36,7 +36,7 @@ import { AnalyticsService } from '../../core/services/analytics.service';
           <div class="hero-actions" [class.animate-in]="isVisible()">
             <button 
               class="btn-primary" 
-              (click)="trackCTA()"
+              (click)="onCtaClick()"
               aria-label="Get started"
             >
               <span>Get Started</span>
