@@ -98,7 +98,8 @@ import { AnalyticsService } from '../../core/services/analytics.service';
               <path d="M7 14C7 10.134 10.134 7 14 7C17.866 7 21 10.134 21 14H17.5C17.5 12.067 15.933 10.5 14 10.5C12.067 10.5 10.5 12.067 10.5 14H7Z" fill="#1C1917"/>
               <circle cx="14" cy="19" r="2.5" fill="#1C1917"/>
             </svg>
-          </div>                </div>
+          </div>             
+           </div>
               </div>
             </div>
           </div>
