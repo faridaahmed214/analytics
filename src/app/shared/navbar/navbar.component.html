@@ -1,0 +1,68 @@
+<nav
+  class="navbar"
+  [class.scrolled]="isScrolled()"
+  role="navigation"
+  aria-label="Main navigation"
+>
+  <div class="navbar-inner">
+    <a routerLink="/" class="navbar-logo" aria-label="Home">
+      <div class="logo-icon">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+          <rect width="28" height="28" rx="8" fill="#C9A96E"/>
+          <path d="M7 14C7 10.134 10.134 7 14 7C17.866 7 21 10.134 21 14H17.5C17.5 12.067 15.933 10.5 14 10.5C12.067 10.5 10.5 12.067 10.5 14H7Z" fill="#1C1917"/>
+          <circle cx="14" cy="19" r="2.5" fill="#1C1917"/>
+        </svg>
+      </div>
+    </a>
+
+    <div class="navbar-links" role="menubar">
+      <a
+        routerLink="/"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        class="nav-link"
+        role="menuitem"
+      >
+        Home
+      </a>
+      <a
+        routerLink="/search"
+        routerLinkActive="active"
+        class="nav-link"
+        role="menuitem"
+      >
+        Search
+      </a>
+      <a
+        routerLink="/form"
+        routerLinkActive="active"
+        class="nav-link"
+        role="menuitem"
+      >
+        Contact
+      </a>
+    </div>
+
+    <a routerLink="/form" class="navbar-cta" aria-label="Get started" (click)="onCtaClick()">
+      Get Started
+    </a>
+
+    <button
+      class="hamburger"
+      (click)="toggleMenu()"
+      [attr.aria-expanded]="menuOpen()"
+      aria-label="Toggle navigation menu"
+    >
+      <span class="bar" [class.open]="menuOpen()"></span>
+      <span class="bar" [class.open]="menuOpen()"></span>
+      <span class="bar" [class.open]="menuOpen()"></span>
+    </button>
+  </div>
+
+  <div class="mobile-menu" [class.open]="menuOpen()" role="menu">
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="mobile-link" (click)="closeMenu()" role="menuitem">Home</a>
+    <a routerLink="/search" routerLinkActive="active" class="mobile-link" (click)="closeMenu()" role="menuitem">Search</a>
+    <a routerLink="/form" routerLinkActive="active" class="mobile-link" (click)="closeMenu()" role="menuitem">Contact</a>
+    <a routerLink="/form" class="mobile-cta" (click)="onMobileCtaClick()" role="menuitem">Get Started</a>
+  </div>
+</nav>

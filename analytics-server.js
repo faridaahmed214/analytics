@@ -42,7 +42,10 @@ app.get("/api/overview", async (req, res) => {
       avgSessionDuration: parseFloat(v[3]?.value || "0").toFixed(0),
       pageViews: v[4]?.value || "0",
     });
-  } catch (e) { res.status(500).json({ error: e.message }); }
+  } catch (e) {
+    console.error(`[Analytics API Error] ${req.path}:`, e);
+    res.status(500).json({ error: "Internal server error fetching analytics data." });
+  }
 });
 
 app.get("/api/daily-users", async (req, res) => {
@@ -54,7 +57,10 @@ app.get("/api/daily-users", async (req, res) => {
       date: row.dimensionValues[0].value,
       users: parseInt(row.metricValues[0].value),
     })));
-  } catch (e) { res.status(500).json({ error: e.message }); }
+  } catch (e) {
+    console.error(`[Analytics API Error] ${req.path}:`, e);
+    res.status(500).json({ error: "Internal server error fetching analytics data." });
+  }
 });
 
 app.get("/api/events", async (req, res) => {
@@ -65,7 +71,10 @@ app.get("/api/events", async (req, res) => {
     res.json((r.rows || []).map(row => ({
       name: row.dimensionValues[0].value, count: parseInt(row.metricValues[0].value),
     })));
-  } catch (e) { res.status(500).json({ error: e.message }); }
+  } catch (e) {
+    console.error(`[Analytics API Error] ${req.path}:`, e);
+    res.status(500).json({ error: "Internal server error fetching analytics data." });
+  }
 });
 
 app.get("/api/devices", async (req, res) => {
@@ -75,7 +84,10 @@ app.get("/api/devices", async (req, res) => {
     res.json((r.rows || []).map(row => ({
       device: row.dimensionValues[0].value, sessions: parseInt(row.metricValues[0].value),
     })));
-  } catch (e) { res.status(500).json({ error: e.message }); }
+  } catch (e) {
+    console.error(`[Analytics API Error] ${req.path}:`, e);
+    res.status(500).json({ error: "Internal server error fetching analytics data." });
+  }
 });
 
 app.get("/api/pages", async (req, res) => {
@@ -89,7 +101,10 @@ app.get("/api/pages", async (req, res) => {
       views: parseInt(row.metricValues[0].value),
       users: parseInt(row.metricValues[1].value),
     })));
-  } catch (e) { res.status(500).json({ error: e.message }); }
+  } catch (e) {
+    console.error(`[Analytics API Error] ${req.path}:`, e);
+    res.status(500).json({ error: "Internal server error fetching analytics data." });
+  }
 });
 
 app.get("/api/countries", async (req, res) => {
@@ -100,7 +115,10 @@ app.get("/api/countries", async (req, res) => {
     res.json((r.rows || []).slice(0, 8).map(row => ({
       country: row.dimensionValues[0].value, users: parseInt(row.metricValues[0].value),
     })));
-  } catch (e) { res.status(500).json({ error: e.message }); }
+  } catch (e) {
+    console.error(`[Analytics API Error] ${req.path}:`, e);
+    res.status(500).json({ error: "Internal server error fetching analytics data." });
+  }
 });
 
 app.listen(PORT, () => {
